@@ -2,9 +2,132 @@ var simpleParser = require("mailparser").simpleParser;
 var expressions = require("./utils/regex");
 
 module.exports.hello = async (event) => {
-  console.log(event.email)
-  const { email, appName } = event
-  a = email.replace(/\*|_/g, "").replace(/\<|_/g, "").replace(/\>|_/g, "").replace(/\r\n|\r|\n|_/g, " ")
+  const {email , appName} = event
+// const {email , appName} = {
+//   email: `
+
+  
+   
+   
+   
+   
+   
+   
+  
+   
+ 
+   
+   
+   
+     
+      
+       
+       
+         
+            
+         
+       
+        
+     
+   
+   
+   
+   
+   
+    
+     
+      
+       
+       
+         
+          
+           
+           
+             
+//   Hi Biswajit,   
+             
+           
+           
+           
+           
+             
+//   Thank you for availing  Flipkart Pay Later.   
+
+
+
+
+
+
+//   Please pay your dues for August 2022 by 05 September 2022 to avoid late payment charges. In case you are unable to pay the full amount, you can also pay a minimum due of  Rs. 79.90  (including a small convenience fee) on or before the due date to move the remaining amount to the next bill. Please check the attachment for more details.   
+
+
+
+
+
+
+//   Thank you in advance for your prompt response to this email. We value your continued business with us.   
+
+
+
+
+
+
+//   Amount Due  ₹199.00    
+
+
+
+
+
+
+//   Click here to pay   
+
+
+
+
+
+
+//   Please ignore if already paid.   
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+// `
+// ,
+//     appName:'Flipkart Pay Later'
+//   }
+  
+  a = email.replace(/\*|_/g, "").replace(/\<|_/g, "").replace(/\>|_/g, "").replace(/\r\n|\r|\n|_/g, " ").replace(/\s\s+/g, ' ')
+  console.log(a)
                         const reg = expressions.expressionData[appName].regex;
                         //console.log(reg)
                         const regData = expressions.expressionData[appName].returnData;
