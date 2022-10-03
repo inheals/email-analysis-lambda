@@ -2,94 +2,30 @@ var simpleParser = require("mailparser").simpleParser;
 var expressions = require("./utils/regex");
 
 module.exports.hello = async (event) => {
-  // const {email , appName} = event
-const {email , appName} = {
-  email: `
-  Content-Type: text/plain; charset="UTF-8"
-  Content-Transfer-Encoding: quoted-printable
+  const {email , appName} = event
+// const {email , appName} = {
+//   email: `[http://l.flipkart.com/t/open/Pqt5dGC5tS9HKrZzbsZoVI7MNe8B2zIOaIvOqDOaC_5jG_br77Pl1XYUs214iGawCG-v5NWjP_yAwuLdKUp0VmbypM4BJ9mJx0IodGJjuqN3j9uKgTYxjWk9-aw-gonQdGr7YMoNo9yCPEx8pC57B41KSVWcNm9Tlm76gofVCdbLF_tcvk8pAXbkKgc6oqwxUcczdVqtCeLS4BFXGLPCKZaHjFStykN7L76bP0ZVdhJA2HRS-JYAtSVcm3hwM-9kt3gzknh8fxKy1I05zHuHy38_ePgjSNsr3rffxayPSOyMTNkb66Cou3rBsqEPfsZpRmwE8BSF6bq_WGTYarRSqQ==?e=true]
+
+//   Flipkart.com
+//   [https://img1a.flixcart.com/www/email/images/20170217-182335-2017-02-17.png]
+//   [http://l.flipkart.com/t/click/ioUdrLOVu4babyFxhzpH7TjGynp8L5H_QOCxupKAfugs6ToZANjbd5IYNrFvnfwfOYsBx6julLe3AnEWsOsB2dflAA5Js8BDJirrsoaMhKpFuva2KdNwoW8gYPS9gfbzBaPPG8vekuIIKeJQX5wxwcc97FFxPYfd1QkK17BNkDn5QGBhPoryXwtFVrWiV6fEBjlBRMYDN_zryyVgYeXFj9MxchaGJFHIHybB_iY5Rdyw3Ef9jM5BPqW-0M3FInNCLhXsjvV-swamdfmCwPoZCo6eTfzFucB-WuaNLdmzL_MGt4wz0lODGcCJnn_xl7U18Qf_5rdRK0GZT6tiIcj6q0RFzD5tDHnGUJTPrYd3mxjwb372QFzYEZUF99i7JyAxnF64tsbyONogQD7832Hhl4lmeEmljHMSPNUwPBAwCMHixFg12l7kWs_zoBSGEkK8dopyf4TClroM0zQ1QWWr0EnkAGN6OVyD3gX_I41cj1oFl4A07aO_Rl6CcdE6oqJdabYYmVtIz-gHXksWmwuXzw==?e=true]
   
-  ---------- Forwarded message ---------
-  From: Ashutosh Behera <ashutoshr099@gmail.com>
-  Date: Sun, Jul 3, 2022 at 9:44 PM
-  Subject: Fwd: Freecharge Pay Later Bill Generated!
-  To: <padhisiddharth31@gmail.com>
+//   Hi Biswajit
   
+//   Greetings from Flipkart.
   
-  
-  ---------- Forwarded message ---------
-  From: Freecharge <noreply@freechargemail.in>
-  Date: Thu, 5 May, 2022, 3:42 am
-  Subject: Freecharge Pay Later Bill Generated!
-  To: <ashutoshr099@gmail.com>
+//   Thanks for using Flipkart Pay Later. We've received Rs 199.0 towards your August
+//   bill.
   
   
-  Freecharge Pay Later bill
   
-  Billing cycle: 05-04-2022 to 04-05-2022
+//   We would love to get your feedback.
   
-  Total Due Amount
-  *=E2=82=B9159.20*
+//   How was your Flipkart Pay Later bill payment experience?`,
+//     appName:'Flipkart Pay Later'
+//   }
   
-  Due Date
-  *05-05-2022*
-  
-  Hi Ashutosh,
-  
-  Thank you for using Freecharge Pay Later. Your bill details are given below=
-  .
-  
-  Billing Cycle
-  
-  05-04-2022 - 04-05-2022
-  ------------------------------
-  
-  Pay Later Balanced Utilized
-  
-  =E2=82=B9159.20
-  ------------------------------
-  
-  Interest Applicable
-  
-  =E2=82=B90.00
-  ------------------------------
-  
-  Total Due Amount
-  
-  =E2=82=B9159.20
-  ------------------------------
-  
-  Due Date
-  
-  05-05-2022
-  
-  =E2=82=B90.00 Cashback
-  
-  You will receive cashback for the interest charged in your Freecharge
-  Wallet within 72 hours after bill payment.
-  
-  Please pay your Freecharge Pay Later bill on the due date to *avoid late
-  fee and avail the Pay Later Balance for the next cycle.*
-  
-  * To pay your Freecharge Pay Later bill, click below. *
-  PAY BILL <https://freecharge.in/fc/app?action=3Dview&page=3Dpaylater>
-  
-  Download the Freecharge mobile app now
-  <https://itunes.apple.com/in/app/freecharge-payments-wallet/id877495926?mt=
-  =3D8>
-  <https://play.google.com/store/apps/details?id=3Dcom.freecharge.android>
-  
-  For any queries or any concerns , write to us at care@freecharge.com |
-  =C2=A9FCPT.
-  
-  Freecharge balance is issued by Axis Bank Limited.
-  
-  Freecharge: 2nd Floor, Plot No. 25, Pusa Road, New Delhi -110005
-`
-,
-    appName:'Freecharge Pay Later bill'
-  }
-  
-  a = email.replace(/\*|_/g, "").replace(/\<|_/g, "").replace(/\>|_/g, "").replace(/\r\n|\r|\n|_/g, " ").replace(/\s\s+/g, ' ')
+  a = email.replace(/\*|_/g, "").replace(/\<|_/g, "").replace(/\>|_/g, "").replace(/\r\n|\r|\n|_/g, " ").replace(/\s\s+/g, ' ').replace(/[\[\]]+/g,'')
   console.log(a)
                         const reg = expressions.expressionData[appName].regex;
                         //console.log(reg)
