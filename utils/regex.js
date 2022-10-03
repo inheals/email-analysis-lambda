@@ -17,21 +17,15 @@ module.exports.expressionData = {
     simpl:{
       regex: [
         "([0-9]{2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([^a-zA-Z])([0-9]*.[0-9]*)",
-        "Pay\\s{1,}Bill\\s{1,}(http[s]?:\\/?\\/?[^:\\/\\s]+(\\/\\w+)*\\/[\\w\\-\\.]+[^#?\\s]+.*?(#[\\w\\-]+)?)"
-      ],
-      returnData: [
-        ["bill_due_date","bill_due_month","bill_due_year","currency","amount_due"],
-        ["pay_url"]
-      ]
-    },
-    simpl1:{
-      regex:[
+        "Pay\\s{1,}Bill\\s{1,}(http[s]?:\\/?\\/?[^:\\/\\s]+(\\/\\w+)*\\/[\\w\\-\\.]+[^#?\\s]+.*?(#[\\w\\-]+)?)",
         "Hi\\s([A-Za-z0-9\\s]+),",
-        "(=E2=82=B9|₹)([0-9\\.]+)",
+        "\\*([a-zA-Z0-9=]+)\\*([0-9\\.]+)",
         "has\\sbeen\\s(received)",
         "on\\s(\\d)rd\\s(January|February|March|April|May|June|July|August|September|October|November|December)\\s(\\d{4}),\\s([0-9:]{5}\\sam)"
       ],
       returnData: [
+        ["bill_due_date","bill_due_month","bill_due_year","currency","amount_due"],
+        ["pay_url"],
         ["consumer_name"],
         ["currency","amount"],
         ["transaction_type"],
