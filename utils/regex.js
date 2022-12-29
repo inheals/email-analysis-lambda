@@ -54,7 +54,7 @@ module.exports.expressionData = {
         ['pay_url']
       ]
     },
-    freecharge:{
+    'Freecharge Pay Later':{
       regex:[
         "Total\\sDue\\sAmount\\s(.)(\\d{1,}.\\d{1,})",
         "Due\\sDate\\s(\\d{2})-(\\d{2})-(\\d{4})",
